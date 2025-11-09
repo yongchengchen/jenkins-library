@@ -6,7 +6,8 @@ def call(String api, String command, String notifyTo = "all", String abfolder=""
         folderQuery = "abfolder=${abfolder}\\&"
     }
 
-    def cmd = "~/wscat -c ${api}?${folderQuery}command=${command}\\&secret=${secret} -e _COMMAND_DONE_ -r 1"
+    //def cmd = "~/wscat -c ${api}?${folderQuery}command=${command}\\&secret=${secret} -e _COMMAND_DONE_ -r 1"
+    def cmd = """~/wscat -c "${api}?${folderQuery}command=${command}\\&secret=${secret}" -e _COMMAND_DONE_ -r 1"""
 
     def output = ""
     def excuteCode = 0
