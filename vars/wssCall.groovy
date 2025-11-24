@@ -8,7 +8,7 @@ def call(String api, String command, String notifyTo = "all", String abfolder=""
 
      echo 'jenkins call command v1'
     
-    excuteCode = sh(script: "~/wscat -c \"${api}?${folderQuery}command=${command}\\&secret=${secret}\" -e _COMMAND_DONE_ -r 1", returnStatus: true)
+    excuteCode = sh(script: "~/wscat -c ${api}?${folderQuery}command=${command}\\&secret=${secret} -e _COMMAND_DONE_ -r 1", returnStatus: true)
     if (excuteCode == 2) {
         slackNotifyAlert("${excuteCode}", notifyTo)
         error "Job fail"
