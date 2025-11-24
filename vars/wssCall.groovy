@@ -5,6 +5,8 @@ def call(String api, String command, String notifyTo = "all", String abfolder=""
     if (abfolder?.trim()) {
         folderQuery="abfolder=${abfolder}\\&";
     }
+
+     echo 'jenkins call command'
     
     excuteCode = sh(script: "~/wscat -c ${api}?${folderQuery}command=${command}\\&secret=${secret} -e _COMMAND_DONE_ -r 1", returnStatus: true)
     if (excuteCode == 2) {
